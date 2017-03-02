@@ -4,6 +4,8 @@ tignore contributors: remember to update Global/Xcode.gitignore, Objective-C.git
 build/
 DerivedData/
 
+.DS_Store
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
