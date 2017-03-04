@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceShooter/GameScene.swift"
+            timestampString = "510205310.472329"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "updateLabel()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceShooter/gameOver.swift"
+            timestampString = "509076107.959307"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SheepCounter.gameOver.init (size : __C.CGSize) -&gt; SheepCounter.gameOver"
+                  moduleName = "SheepCounter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roxannefarkas/Desktop/sheepCounter%20copy/SpaceShooter/gameOver.swift"
+                  timestampString = "509235131.261815"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "83">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SheepCounter.gameOver.__allocating_init (size : __C.CGSize) -&gt; SheepCounter.gameOver"
+                  moduleName = "SheepCounter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roxannefarkas/Desktop/sheepCounter%20copy/SpaceShooter/gameOver.swift"
+                  timestampString = "509235131.264134"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SheepCounter.gameOver.init () -&gt; SheepCounter.gameOver"
+                  moduleName = "SheepCounter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roxannefarkas/Desktop/sheepCounter%20copy/SpaceShooter/gameOver.swift"
+                  timestampString = "509235131.266685"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "53">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SheepCounter.gameOver.__allocating_init () -&gt; SheepCounter.gameOver"
+                  moduleName = "SheepCounter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roxannefarkas/Desktop/sheepCounter%20copy/SpaceShooter/gameOver.swift"
+                  timestampString = "509235131.269383"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SheepCounter.gameOver.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;SheepCounter.gameOver&gt;"
+                  moduleName = "SheepCounter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roxannefarkas/Desktop/sheepCounter%20copy/SpaceShooter/gameOver.swift"
+                  timestampString = "509235131.271452"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SheepCounter.gameOver.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;SheepCounter.gameOver&gt;"
+                  moduleName = "SheepCounter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roxannefarkas/Desktop/sheepCounter%20copy/SpaceShooter/gameOver.swift"
+                  timestampString = "509235131.274084"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "105">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
