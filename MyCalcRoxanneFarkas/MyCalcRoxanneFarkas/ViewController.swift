@@ -12,6 +12,7 @@ enum modes {
     case not_set
     case addition
     case subtraction
+    case multiplication
 }
 
 class ViewController: UIViewController {
@@ -22,54 +23,63 @@ class ViewController: UIViewController {
     var lastButtonWasMode:Bool = false
     
     @IBOutlet weak var calcLabel: UILabel!
-
-    @IBAction func didPressNumber(_ sender: UIButton) {
-        if(lastButtonWasMode){
-            lastButtonWasMode = false
-            labelString = "0"
-        }
-        let stringValue:String? = sender.titleLabel?.text
-        labelString = labelString.appending(stringValue!)
-        
-        calcLabel.text = labelString
-        
-        updateText()
-    }
     
     @IBAction func didPressPlus(_ sender: UIButton) {
         changeMode(newMode: .addition)
+    }
+    
+    @IBAction func didPressMinus(_ sender: UIButton) {
+        changeMode(newMode: .subtraction)
+    }
+    
+    @IBAction func didPressMultiply(_ sender: UIButton) {
+        changeMode(newMode: .multiplication)
     }
     
     @IBAction func didPressEquals(_ sender: UIButton) {
         guard let labelInt:Int = Int(labelString) else{
             return
         }
-        if(currentMode == .not_set || lastButtonWasMode) {
+        
+        if(currentMode == .not_set || lastButtonWasMode){
             return
         }
+        
         if(currentMode == .addition){
             savedNum += labelInt
         }
-        if(currentMode == .subtraction){
+        else if(currentMode == .subtraction){
             savedNum -= labelInt
+        }
+        else if(currentMode == .multiplication){
+            savedNum *= labelInt
         }
         
         currentMode = .not_set
         labelString = "\(savedNum)"
         updateText()
+        lastButtonWasMode = true
     }
     
     @IBAction func didPressClear(_ sender: UIButton) {
-       labelString = "0"
-       currentMode = .not_set
-       savedNum = 0
-       lastButtonWasMode = false
-        
-    updateText()
+        labelString = "0"
+        currentMode = .not_set
+        savedNum = 0
+        lastButtonWasMode = false
+        calcLabel.text = "0"
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+    @IBAction func didPressNumber(_ sender: UIButton) {
+        
+        let stringValue:String? = sender.titleLabel?.text
+        
+        if(lastButtonWasMode) {
+            lastButtonWasMode = false
+            labelString = "0"
+        }
+
+        labelString = labelString.appending(stringValue!)
+        updateText()
     }
     
     func updateText(){
@@ -80,10 +90,10 @@ class ViewController: UIViewController {
             savedNum = labelInt
         }
         
-        calcLabel.text = "\(labelInt)"
-        
-        calcLabel.text = labelString
-        
+        let formatter:NumberFormatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        let num:NSNumber = NSNumber(value: labelInt)
+        calcLabel.text = formatter.string(from: num)
     }
     
     func changeMode(newMode:modes){
@@ -93,6 +103,11 @@ class ViewController: UIViewController {
         
         currentMode = newMode
         lastButtonWasMode = true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
