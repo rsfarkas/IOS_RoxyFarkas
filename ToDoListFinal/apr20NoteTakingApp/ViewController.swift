@@ -8,11 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating {
 
+    
     @IBOutlet weak var table: UITableView!
+    
+    let searchController = UISearchController(searchResultsController: nil)
 
-    var data:[String] = [""]
+    var data:[Note] = []
+    var filteredData:[Note] = []
     var selectedRow: Int = -1
     var newRowText: String = ""
     var filePath: String?
@@ -20,8 +24,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
      super.viewDidLoad()
 
-        self.title = "Notes"
-
+        setupSearchVC()
+        self.title = "To Do List"
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target:self, action: #selector(addNote))
         self.navigationItem.rightBarButtonItem = addButton
         self.navigationItem.leftBarButtonItem = editButtonItem
@@ -31,6 +35,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         load()
     }
+    
+    func setupSearchVC()
+    {
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        table.tableHeaderView = searchController.searchBar
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All")
+    {
+
+        let searchValueIsEmpty = searchText == ""
+
+        guard !searchValueIsEmpty else {
+            filteredData = data
+            table.reloadData()
+            return
+        }
+
+        filteredData = data.filter {note  in
+            return note.title.lowercased().contains(searchText.lowercased())
+        }
+        table.reloadData()
+    }
+
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -38,7 +69,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return
         }
 
-        data[selectedRow] = newRowText
+        data[selectedRow].title = newRowText
 
         if newRowText == "" {
             data.remove(at: selectedRow)
@@ -52,8 +83,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if (table.isEditing) {
             return
         }
-        let name:String = ""
-        data.insert(name, at: 0)
+        let newNote:Note = Note(title: "")
+        data.insert(newNote, at: 0)
+        filteredData = data
         let indexPath:IndexPath = IndexPath(row: 0, section: 0)
         table.insertRows(at: [indexPath], with: .automatic)
         table.selectRow(at: indexPath, animated: true, scrollPosition: .none)
@@ -61,13 +93,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return filteredData.count
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        cell.textLabel?.text = data[indexPath.row]
-        cell.detailTextLabel?.text = data[indexPath.row]
+        let note = filteredData[indexPath.row]
+        cell.textLabel?.text = note.title
+        if note.complete {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         return cell
     }
 
@@ -88,10 +129,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let itemToMove = data[fromIndexPath.row]
         data.remove(at: fromIndexPath.row)
         data.insert(itemToMove, at: toIndexPath.row)
+        filteredData = data
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath:IndexPath){
         data.remove(at: indexPath.row)
+        filteredData = data
         table.deleteRows(at: [indexPath], with: .fade)
     }
 
@@ -103,7 +146,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let detailView:DetailViewController = segue.destination as! DetailViewController
         selectedRow = table.indexPathForSelectedRow! .row
         detailView.masterView = self
-        detailView.setText(t: data[selectedRow])
+        detailView.note = data[selectedRow]
     }
 
     func save(){
@@ -115,16 +158,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func load(){
         guard let filePath = filePath else { return }
         if let loadedData = NSArray(contentsOfFile:filePath) as? [String] {
-            data = loadedData
-            table.reloadData()
-        }
-    }
 
-    func search(){
-        guard let filePath = filePath else { return }
-        if let loadedData = NSArray(contentsOfFile:filePath) as? [String] {
-            data = loadedData
-            //whatever user types into the search bar
+            var listOfNotes: [Note] = []
+
+            for title in loadedData {
+                let newNote:Note = Note(title: title)
+                listOfNotes.append(newNote)
+
+            }
+
+            data = listOfNotes
+
+            filteredData = data
             table.reloadData()
         }
     }
@@ -134,6 +179,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
 
+     //     MARK: - Search bar Delegate
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int)
+    {
+        print("*searchBar - ")
+        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+    }
+
+    // MARK: - Search View Controller Delegate
+    //method is automatically called whenever the search bar becomes the first responder or changes are made to the text in the search bar. Perform any required filtering and updating inside of this method.
+    public func updateSearchResults(for searchController: UISearchController)
+    {
+
+        let searchBar = searchController.searchBar
+        print("*updateSearchResults - \(searchBar.text)")
+//        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
 
 }
 

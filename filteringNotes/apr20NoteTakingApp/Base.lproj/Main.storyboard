@@ -25,25 +25,26 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="639"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="fOo-hh-FrY">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="BYZ-38-t0r" id="xxm-fj-Dxs"/>
+                                    </connections>
+                                </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="EEn-fV-srf" detailTextLabel="y3A-es-8yB" style="IBUITableViewCellStyleValue1" id="6kA-Bs-RCc">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="EEn-fV-srf" style="IBUITableViewCellStyleDefault" id="6kA-Bs-RCc">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6kA-Bs-RCc" id="9eb-Za-Eu3">
-                                            <rect key="frame" x="0.0" y="0.0" width="336" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EEn-fV-srf">
-                                                    <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y3A-es-8yB">
-                                                    <rect key="frame" x="292" y="11" width="44" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -61,11 +62,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="noi-ry-SzK"/>
                     <connections>
+                        <outlet property="searchDisplayController" destination="40r-cq-aOA" id="o75-aQ-K8J"/>
                         <outlet property="table" destination="92O-Ga-iHA" id="LoX-zt-b1q"/>
                         <segue destination="Ywu-Ag-TCv" kind="show" identifier="detail" id="cXM-oX-sXN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="40r-cq-aOA">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="Cho-hD-PNo"/>
+                        <outlet property="searchBar" destination="fOo-hh-FrY" id="cCR-aT-7Hm"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="P1H-qL-exy"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="GP6-bB-Pt6"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="vgw-s2-SaU"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1076" y="138.98050974512745"/>
         </scene>

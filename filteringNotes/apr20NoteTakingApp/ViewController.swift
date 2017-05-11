@@ -21,7 +21,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
      super.viewDidLoad()
 
         self.title = "Notes"
-
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target:self, action: #selector(addNote))
         self.navigationItem.rightBarButtonItem = addButton
         self.navigationItem.leftBarButtonItem = editButtonItem
@@ -67,7 +66,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         cell.textLabel?.text = data[indexPath.row]
-        cell.detailTextLabel?.text = data[indexPath.row]
         return cell
     }
 
@@ -119,16 +117,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             table.reloadData()
         }
     }
-
-    func search(){
-        guard let filePath = filePath else { return }
-        if let loadedData = NSArray(contentsOfFile:filePath) as? [String] {
-            data = loadedData
-            //whatever user types into the search bar
-            table.reloadData()
-        }
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
