@@ -6,5 +6,4 @@ Starting calculator:
 Working calculator:
 ![alt tag](https://github.com/rsfarkas/IOS_RoxyFarkas/blob/master/advancedCalc/workingCalc.png)
 
-Calculator video:
-![alt tag](https://github.com/rsfarkas/IOS_RoxyFarkas/blob/master/advancedCalc/calculator.mp4)
+Calculator video:(https://github.com/rsfarkas/IOS_RoxyFarkas/blob/master/advancedCalc/calculator.mp4)
