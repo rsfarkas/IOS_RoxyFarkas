@@ -12,4 +12,4 @@ Win Screen:
 Lose Screen:
 ![alt tag](https://github.com/rsfarkas/IOS_RoxyFarkas/blob/master/AnimatedSheepSleep/Simulator%20Screen%20Shot%20May%2012%2C%202017%2C%2012.36.54%20PM.png)
 
-To do list video:(https://github.com/rsfarkas/IOS_RoxyFarkas/blob/master/AnimatedSheepSleep/SheepSleep.mp4)
+Game Video:(https://github.com/rsfarkas/IOS_RoxyFarkas/blob/master/AnimatedSheepSleep/SheepSleep.mp4)
